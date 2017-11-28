@@ -5,8 +5,8 @@ import sagaPlugin from 'reactotron-redux-saga';
 if (__DEV__) {
   const tron = Reactotron
     .configure()
-    .use(reduxPlugin())
-    .use(sagaPlugin())
+    // .use(reduxPlugin())
+    // .use(sagaPlugin())
     .useReactNative()
     .connect();
 

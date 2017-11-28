@@ -7,28 +7,28 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"react": "16.0.0-alpha.12",
-		"react-native": "0.48.4",
-		"prop-types": "^15.5.10",
-		"reactotron-react-native": "^1.12.2",
-    "reactotron-redux": "^1.12.2",
-    "reactotron-redux-saga": "^1.12.2",
+		"react": "16.0.0",
+		"react-native": "0.50.3",
+		"prop-types": "^15.6.0",
+		"reactotron-react-native": "^1.13.2",
+    "reactotron-redux": "^1.13.0",
+    "reactotron-redux-saga": "^1.13.0",
     "apisauce": "^0.14.1"
 	},
 	"devDependencies": {
+		"babel-eslint": "^8.0.2",
 		"babel-jest": "21.2.0",
+		"babel-plugin-module-resolver": "^3.0.0",
 		"babel-preset-react-native": "4.0.0",
 		"jest": "21.2.1",
 		"react-test-renderer": "16.0.0-alpha.12",
-		"babel-eslint": "^7.2.3",
-		"babel-plugin-module-resolver": "^2.7.1",
-		"eslint-config-airbnb": "^15.1.0",
-    "eslint-import-resolver-babel-module": "^3.0.0",
+		"eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0",
-    "eslint-plugin-react-native": "^3.0.1",
-    "eslint": "^3.19.0 || ^4.3.0"
+    "eslint-import-resolver-babel-module": "^4.0.0-beta.3",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-react-native": "^3.1.0",
+    "eslint": "^4.11.0"
 	},
 	"jest": {
 		"preset": "react-native"
