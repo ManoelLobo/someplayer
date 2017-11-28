@@ -2,6 +2,7 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 import Trending from 'pages/trending';
 import Search from 'pages/search';
 import Album from 'pages/album';
+import Footer from 'components/Footer';
 
 const TrendingRoutes = StackNavigator({
   Trending: { screen: Trending },
@@ -18,6 +19,7 @@ const Routes = TabNavigator({
   animationEnabled: false,
   lazy: true,
   tabBarPosition: 'bottom',
+  tabBarComponent: Footer,
 });
 
 export default Routes;
