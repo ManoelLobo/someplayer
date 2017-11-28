@@ -1,7 +1,14 @@
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
+
+import navReducer from 'navigation/reducer';
+
 import configureStore from './configureStore';
 import rootSaga from './sagas';
 
 export default () => {
-  return configureStore(() => ({}), rootSaga);
+  const rootReducer = combineReducers({
+    nav: navReducer,
+  });
+
+  return configureStore(rootReducer, rootSaga);
 };
