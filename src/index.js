@@ -1,4 +1,5 @@
 import 'config/ReactotronConfig';
+import 'config/StatusBarConfig';
 
 import React from 'react';
 import Navigator from 'navigation';
