@@ -1,149 +1,35 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ScrollView, View } from 'react-native';
 import Header from 'components/Header';
 import SongList from 'components/SongList';
 import AlbumList from 'components/AlbumList';
 
 import { connect } from 'react-redux';
-import TrendingSongsActions from 'store/ducks//trending-songs';
+import TrendingSongsActions from 'store/ducks/trending-songs';
+import RecommendedAlbumsActions from 'store/ducks//recommended-albums';
 
 import styles from './styles';
 
-const albums = [
-  {
-    "id": 0,
-    "title": "Villa Mix",
-    "author": "Alok",
-    "thumbnail": "https://i1.sndcdn.com/avatars-000238795694-w2wokh-t500x500.jpg",
-    "songs": [
-      {
-        "id": 0,
-        "title": "Campfire",
-        "author": "RetroVision",
-        "thumbnail": "https://i.ytimg.com/vi/B2p-jLTmFJ0/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music1.mp3"
-      },
-      {
-        "id": 1,
-        "title": "Your Stories (feat. Koit Toome)",
-        "author": "Cartoon",
-        "thumbnail": "https://i.ytimg.com/vi/8VDjPYcL-oU/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music2.mp3"
-      },
-      {
-        "id": 2,
-        "title": "Popsicle",
-        "author": "LFZ",
-        "thumbnail": "https://i.ytimg.com/vi/EP625xQIGzs/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music3.mp3"
-      },
-      {
-        "id": 3,
-        "title": "Your Stories (feat. Koit Toome)",
-        "author": "Cartoon",
-        "thumbnail": "https://i.ytimg.com/vi/8VDjPYcL-oU/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music2.mp3"
-      },
-      {
-        "id": 4,
-        "title": "Campfire",
-        "author": "RetroVision",
-        "thumbnail": "https://i.ytimg.com/vi/B2p-jLTmFJ0/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music1.mp3"
-      }
-    ]
-  },
-  {
-    "id": 1,
-    "title": "Greatest Hits",
-    "author": "Foo Fighters",
-    "thumbnail": "https://upload.wikimedia.org/wikipedia/en/3/35/FooFightersGreatestHits.jpg",
-    "songs": [
-      {
-        "id": 0,
-        "title": "Campfire",
-        "author": "RetroVision",
-        "thumbnail": "https://i.ytimg.com/vi/B2p-jLTmFJ0/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music1.mp3"
-      },
-      {
-        "id": 1,
-        "title": "Your Stories (feat. Koit Toome)",
-        "author": "Cartoon",
-        "thumbnail": "https://i.ytimg.com/vi/8VDjPYcL-oU/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music2.mp3"
-      },
-      {
-        "id": 2,
-        "title": "Popsicle",
-        "author": "LFZ",
-        "thumbnail": "https://i.ytimg.com/vi/EP625xQIGzs/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music3.mp3"
-      },
-      {
-        "id": 3,
-        "title": "Your Stories (feat. Koit Toome)",
-        "author": "Cartoon",
-        "thumbnail": "https://i.ytimg.com/vi/8VDjPYcL-oU/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music2.mp3"
-      },
-      {
-        "id": 4,
-        "title": "Campfire",
-        "author": "RetroVision",
-        "thumbnail": "https://i.ytimg.com/vi/B2p-jLTmFJ0/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music1.mp3"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Hybrid Theory",
-    "author": "Linkin Park",
-    "thumbnail": "https://upload.wikimedia.org/wikipedia/en/c/c9/Linkin_park_hybrid_theory.jpg",
-    "songs": [
-      {
-        "id": 0,
-        "title": "Campfire",
-        "author": "RetroVision",
-        "thumbnail": "https://i.ytimg.com/vi/B2p-jLTmFJ0/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music1.mp3"
-      },
-      {
-        "id": 1,
-        "title": "Your Stories (feat. Koit Toome)",
-        "author": "Cartoon",
-        "thumbnail": "https://i.ytimg.com/vi/8VDjPYcL-oU/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music2.mp3"
-      },
-      {
-        "id": 2,
-        "title": "Popsicle",
-        "author": "LFZ",
-        "thumbnail": "https://i.ytimg.com/vi/EP625xQIGzs/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music3.mp3"
-      },
-      {
-        "id": 3,
-        "title": "Your Stories (feat. Koit Toome)",
-        "author": "Cartoon",
-        "thumbnail": "https://i.ytimg.com/vi/8VDjPYcL-oU/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music2.mp3"
-      },
-      {
-        "id": 4,
-        "title": "Campfire",
-        "author": "RetroVision",
-        "thumbnail": "https://i.ytimg.com/vi/B2p-jLTmFJ0/maxresdefault.jpg",
-        "url": "https://diego3g.github.io/gonative/music1.mp3"
-      }
-    ]
+class Trending extends Component {
+  static propTypes = {
+    trendingRequest: PropTypes.func.isRequired,
+    recommendedRequest: PropTypes.func.isRequired,
+    trendingSongs: PropTypes.shape({
+      data: SongList.propTypes.songs,
+      loading: PropTypes.bool,
+      error: PropTypes.bool,
+    }).isRequired,
+    recommendedAlbums: PropTypes.shape({
+      data: AlbumList.propTypes.albums,
+      loading: PropTypes.bool,
+      error: PropTypes.bool,
+    }).isRequired,
   }
-];
 
-class Trending extends Component{
   componentDidMount() {
     this.props.trendingRequest();
+    this.props.recommendedRequest();
   }
 
   render() {
@@ -163,7 +49,8 @@ class Trending extends Component{
 
           <AlbumList
             title="Álbuns recomendados"
-            albums={albums}
+            albums={this.props.recommendedAlbums.data}
+            loading={this.props.recommendedAlbums.loading}
           />
         </ScrollView>
       </View>
@@ -173,10 +60,12 @@ class Trending extends Component{
 
 const mapStateToProps = state => ({
   trendingSongs: state.trendingSongs,
+  recommendedAlbums: state.recommendedAlbums,
 });
 
 const mapDispatchToProps = dispatch => ({
   trendingRequest: () => dispatch(TrendingSongsActions.trendingRequest()),
+  recommendedRequest: () => dispatch(RecommendedAlbumsActions.recommendedRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Trending);
