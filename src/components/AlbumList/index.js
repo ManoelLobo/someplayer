@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, ActivityIndicator, ScrollView } from 'react-native';
-import AlbumItem from './components/AlbumItem';
+import AlbumItemComponent, { AlbumItem } from './components/AlbumItem';
 
 import styles from './styles';
 
@@ -23,7 +23,7 @@ export default class AlbumList extends Component {
       showsHorizontalScrollIndicator={false}
     >
       { this.props.albums.map((album, index) => (
-        <AlbumItem
+        <AlbumItemComponent
           key={album.id}
           style={[
             styles.listItem,

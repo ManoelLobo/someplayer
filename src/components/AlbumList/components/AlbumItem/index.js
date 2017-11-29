@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation'
 
 import styles from './styles';
 
-export default class AlbumItem extends Component {
+export class AlbumItem extends Component {
   static propTypes = {
     album: PropTypes.shape({
       id: PropTypes.number,
@@ -13,17 +15,27 @@ export default class AlbumItem extends Component {
       thumbnail: PropTypes.string,
     }).isRequired,
     style: View.propTypes.style,
+    dispatch: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     style: {},
   }
 
+  navigateToAlbum = () => {
+    const { album, dispatch } = this.props;
+
+    return dispatch(NavigationActions.navigate({
+      routeName: 'Album',
+      params: { album },
+    }));
+  }
+
   render() {
     return (
       <TouchableOpacity
         style={[styles.container, this.props.style]}
-        onPress={() => {}}
+        onPress={this.navigateToAlbum}
         activeOpacity={0.6}
       >
         <Image
@@ -37,3 +49,5 @@ export default class AlbumItem extends Component {
     );
   }
 }
+
+export default connect()(AlbumItem);
