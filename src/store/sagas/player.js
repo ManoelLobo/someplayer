@@ -5,12 +5,13 @@ import ActionCreators from 'store/ducks/player';
 
 const { RNSound } = NativeModules;
 
-export function* setSong(action) {
+export function* setSongRequest(action) {
   try {
+    yield cps(RNSound.pause, 0);
     yield cps(RNSound.prepare, action.song.url, 0, {});
 
     yield put(ActionCreators.playerSetSongSuccess(action.song, action.list));
-    yield put(ActionCreators.playerplay());
+    yield put(ActionCreators.playerPlay());
   } catch (e) {
     yield put(ActionCreators.playerSetSongFailure());
   }

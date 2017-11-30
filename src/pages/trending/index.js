@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, View } from 'react-native';
 import Header from 'components/Header';
-import SongList from 'components/SongList';
+import SongListComponent, { SongList } from 'components/SongList';
 import AlbumList from 'components/AlbumList';
 
 import { connect } from 'react-redux';
@@ -41,7 +41,7 @@ class Trending extends Component {
           style={styles.container}
           showsVerticalScrollIndicator={false}
         >
-          <SongList
+          <SongListComponent
             title="Músicas em alta"
             songs={this.props.trendingSongs.data}
             loading={this.props.trendingSongs.loading}
